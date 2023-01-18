@@ -25,6 +25,43 @@
         <div class="books" id="books">
 
         </div>
+
     </div>
+    
+    <div class="modal" id="modal">
+        <form class="book-form" id="book-form">
+            <h3>Add a new book</h3>
+            <input 
+            class="input" 
+            type="text"
+            id="title"
+            placeholder="Title"
+            required maxlength="100">
+            <p class="error-msg" id="error-msg"></p>
+            
+            <input 
+            class="input" 
+            type="text"
+            id="author"
+            placeholder="Author"
+            required maxlength="100">
+
+            <input 
+            class="input" 
+            type="number"
+            id="pages"
+            placeholder="Pages"
+            required maxlength="100">
+
+            <div class="is-read">
+                <label for="is-read">Have you read it?</label>
+                <input class="checkbox" type="checkbox" id="isRead-check">
+            </div>
+
+            <button class="btn-submit" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
 </body>
 </html>
