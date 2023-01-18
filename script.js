@@ -1,20 +1,41 @@
+const books = document.querySelector("#books");
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+//Object Constructor
+function Book(Title, Author, Pages, Read) {
     
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-
-    this.info = function() {
-        return title + " " + author + ", " + pages + " pages, " + read;
-    }
-}
-
-const addBookToLibrary = () => {
-
-
+    this.Title = Title;
+    this.Author = Author;
+    this.Pages = Pages;
+    this.Read = Read;
 
 }
+
+const addBookToLibrary = (Title, Author, Pages, Read) => {
+
+    let book = new Book(Title, Author, Pages, Read);
+    myLibrary.push(book);
+
+}
+
+const displayBook = () => {
+    myLibrary.forEach(myLibrary => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        books.appendChild(card);
+
+        for (let key in myLibrary) {
+            const para = document.createElement("p");
+            para.textContent = (`${key}: ${myLibrary[key]}`);
+            card.appendChild(para);
+        }
+    })
+}
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Not read yet");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Read");
+addBookToLibrary("Dummy book", "J.R.R. Tolkien", 300, "Not read yet");
+addBookToLibrary("Dummy book 2", "J.R.R. Not Tolkien", 265, "Not read yet");
+
+displayBook();

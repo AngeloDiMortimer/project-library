@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f0eff1;
+}
+
+button {
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.header {
+    background-color: #fffbfb;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0 2rem;
+}
+
+.header .container h1 {
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+/* main */
+
+.main {
+    margin: 2rem 3rem 0;
+    text-align: center;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.btn-add {
+    font-size: 1.9rem;
+    font-weight: 600;
+    transition: filter 0.15s ease-in-out;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.btn-add:hover {
+    filter: brightness(90%);
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    margin-top: 4rem;
+    gap: 40px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    font-size: 1.1rem;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fffbfb;
+    border-radius: 8px;
+}
