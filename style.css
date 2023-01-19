@@ -73,3 +73,74 @@ button {
     background-color: #fffbfb;
     border-radius: 8px;
 }
+
+/* modal */
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    padding: 20px;
+    background-color: #f0eef1;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.error-msg {
+    display: none;
+    color: rgb(255, 29, 29);
+}
+
+.book-form h3 {
+    font-size: 23px;
+}
+
+.book-form input {
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 17px;
+    font-weight: 550;
+}
+
+.btn-submit {
+    background-color: #75ffa3;
+    padding: 0.8rem;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.is-read {
+    display: flex;
+    flex-flow: row nowrap;
+    min-height: 0;
+    min-width: 100%;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.is-read label {
+    white-space: nowrap;
+    font-size: 18px;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: white;
+}
+
