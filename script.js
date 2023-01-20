@@ -1,4 +1,8 @@
-const books = document.querySelector("#books");
+const books = document.getElementById("books");
+const addBookBtn = document.getElementById("btn-add");
+const bookModal = document.getElementById("modal");
+const overlay = document.getElementById("overlay");
+const bookForm = document.getElementById("book-form");
 
 let myLibrary = [];
 
@@ -32,6 +36,21 @@ const displayBook = () => {
         }
     })
 }
+
+const openAddBookModal = () => {
+    bookForm.reset();
+    bookModal.classList.add("active");
+    overlay.classList.add("active");
+}
+
+const closeAddBookModal = () => {
+    bookModal.classList.remove("active");
+    overlay.classList.remove("active");
+}
+
+
+addBookBtn.onclick = openAddBookModal;
+overlay.onclick = closeAddBookModal;
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Not read yet");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Read");
