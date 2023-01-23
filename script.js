@@ -4,6 +4,7 @@ const bookModal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const bookForm = document.getElementById("book-form");
 
+
 let myLibrary = [];
 
 //Object Constructor
@@ -16,6 +17,7 @@ function Book(title, author, pages, read) {
 
 }
 
+/*
 const addBookToLibrary = (title, author, pages, read) => { //adds a book to library
 
     let book = new Book(title, author, pages, read);
@@ -23,28 +25,23 @@ const addBookToLibrary = (title, author, pages, read) => { //adds a book to libr
 
 }
 
-
-/*
+*/
 const getBookInput = () => {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
     const read = document.getElementById("isRead").checked;
-    return new Book(title, author, pages, isRead)
+    return new Book(title, author, pages, read)
 }
 
-const addBook = (e) => {
+const addBookToLibrary = (e) => {
     e.preventDefault();
-    const book = getBookInput();
+    let book = getBookInput();
 
-    for (const book in myLibrary) {
-        if (newBook.title === book.title) {
-            console.log("error bro you suck");
-        }
-    }
+    myLibrary.push(book);
 
 }
-*/
+
 const updateGrid = () => { //updates the grid for each book object in myLibrary
     
     for (let book of myLibrary) {
@@ -105,9 +102,10 @@ const closeAddBookModal = () => { //closes the modal
 addBookBtn.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
 
+/*
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Not read yet");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Read");
 addBookToLibrary("Dummy book", "J.R.R. Tolkien", 300, "Not read yet");
 addBookToLibrary("Dummy book 2", "J.R.R. Not Tolkien", 265, "Not read yet");
-
+*/
 updateGrid();
