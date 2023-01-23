@@ -74,6 +74,31 @@ button {
     border-radius: 8px;
 }
 
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: filter 0.15s ease-in-out;
+    font-size: 1.1rem;
+}
+
+.btn-light-green {
+    background-color: #75ffa3;
+}
+
+.btn-light-red {
+    background-color: #ff9c9c;
+}
+
+.btn:hover {
+    filter: brightness(90%);
+}
+
 /* modal */
 
 .modal {
