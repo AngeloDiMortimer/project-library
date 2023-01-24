@@ -3,6 +3,7 @@ const addBookBtn = document.getElementById("btn-add");
 const bookModal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const bookForm = document.getElementById("book-form");
+const addthebook = document.getElementById("btn-submit");
 
 
 let myLibrary = [];
@@ -39,11 +40,18 @@ const addBookToLibrary = (e) => {
     let book = getBookInput();
 
     myLibrary.push(book);
+    updateGrid();
+    closeAddBookModal();
 
+}
+
+const resetGrid = () => {
+    books.innerHTML = "";
 }
 
 const updateGrid = () => { //updates the grid for each book object in myLibrary
     
+    resetGrid();
     for (let book of myLibrary) {
         displayBook(book);
     }
@@ -101,6 +109,7 @@ const closeAddBookModal = () => { //closes the modal
 
 addBookBtn.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
+addthebook.onclick = addBookToLibrary;
 
 /*
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Not read yet");
@@ -108,4 +117,3 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Read");
 addBookToLibrary("Dummy book", "J.R.R. Tolkien", 300, "Not read yet");
 addBookToLibrary("Dummy book 2", "J.R.R. Not Tolkien", 265, "Not read yet");
 */
-updateGrid();
