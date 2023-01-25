@@ -18,15 +18,7 @@ function Book(title, author, pages, read) {
 
 }
 
-/*
-const addBookToLibrary = (title, author, pages, read) => { //adds a book to library
 
-    let book = new Book(title, author, pages, read);
-    myLibrary.push(book);
-
-}
-
-*/
 const getBookInput = () => {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
@@ -40,23 +32,21 @@ const addBookToLibrary = (e) => {
     let book = getBookInput();
 
     myLibrary.push(book);
-    updateGrid();
+    displayBook(book);
     closeAddBookModal();
 
 }
 
-const resetGrid = () => {
+const removeBook = (title) => {
+    let index = myLibrary.findIndex(id => id.title == title);
+    myLibrary.splice(index, 1);
+
+}
+
+const resetGrid = () => { //resets the grid before it loops
     books.innerHTML = "";
 }
 
-const updateGrid = () => { //updates the grid for each book object in myLibrary
-    
-    resetGrid();
-    for (let book of myLibrary) {
-        displayBook(book);
-    }
-
-}
 
 const displayBook = (book) => {
     const card = document.createElement("div");
@@ -77,6 +67,8 @@ const displayBook = (book) => {
     pages.textContent = `${book.pages} pages`;
     removeBtn.textContent = "Remove";
 
+   
+
     if (book.read) {
         readBtn.textContent = "Read";
         readBtn.classList.add("btn-light-green");
@@ -92,6 +84,13 @@ const displayBook = (book) => {
     card.appendChild(buttonGroup);
     buttonGroup.appendChild(readBtn);
     buttonGroup.appendChild(removeBtn);
+
+
+    removeBtn.addEventListener('click', () => {
+        
+        removeBook(book.title);
+        card.remove();
+    })
 
 }
 
@@ -111,9 +110,3 @@ addBookBtn.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
 addthebook.onclick = addBookToLibrary;
 
-/*
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Not read yet");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "Read");
-addBookToLibrary("Dummy book", "J.R.R. Tolkien", 300, "Not read yet");
-addBookToLibrary("Dummy book 2", "J.R.R. Not Tolkien", 265, "Not read yet");
-*/
