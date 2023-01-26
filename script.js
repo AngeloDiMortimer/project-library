@@ -4,6 +4,7 @@ const bookModal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const bookForm = document.getElementById("book-form");
 const addthebook = document.getElementById("btn-submit");
+const errorMsg = document.getElementById("error-msg");
 
 
 let myLibrary = [];
@@ -32,6 +33,12 @@ const addBookToLibrary = (e) => {
     e.preventDefault();
     let book = getBookInput();
 
+    if (isInLibrary(book)) {
+        errorMsg.textContent = "This books already exists in your library";
+        errorMsg.classList.add("active");
+        return
+    }
+
     myLibrary.push(book);
     displayBook(book);
     closeAddBookModal();
@@ -52,6 +59,10 @@ const changeRead = (title) => { //changes value of "read" in the object and retu
     } else { 
         return myLibrary[index].read = true;
     }
+}
+
+const isInLibrary = (newBook) => { //checks if the book is already in the array by using its name
+    return myLibrary.some((book) => book.title == newBook.title);
 }
 
 const displayBook = (book) => { //generates the divs displayed on screen

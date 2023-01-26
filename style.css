@@ -131,6 +131,11 @@ button {
     color: rgb(255, 29, 29);
 }
 
+.error-msg.active {
+    display: block;
+    margin-top: -15px;
+}
+
 .book-form h3 {
     font-size: 23px;
 }
