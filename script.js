@@ -18,8 +18,8 @@ function Book(title, author, pages, read) {
 
 }
 
-
-const getBookInput = () => {
+/* User input */
+const getBookInput = () => { 
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
@@ -27,6 +27,7 @@ const getBookInput = () => {
     return new Book(title, author, pages, read)
 }
 
+/* Pushes the book into the array and displays the book on screen */
 const addBookToLibrary = (e) => {
     e.preventDefault();
     let book = getBookInput();
@@ -38,17 +39,22 @@ const addBookToLibrary = (e) => {
 }
 
 const removeBook = (title) => {
+    let index = myLibrary.findIndex(id => id.title == title); //identifies the index of the specific object
+    myLibrary.splice(index, 1); //removes said object using the found index
+
+}
+
+const changeRead = (title) => { //changes value of "read" in the object and returns it
     let index = myLibrary.findIndex(id => id.title == title);
-    myLibrary.splice(index, 1);
 
+    if (myLibrary[index].read === true) {
+        return myLibrary[index].read = false;
+    } else { 
+        return myLibrary[index].read = true;
+    }
 }
 
-const resetGrid = () => { //resets the grid before it loops
-    books.innerHTML = "";
-}
-
-
-const displayBook = (book) => {
+const displayBook = (book) => { //generates the divs displayed on screen
     const card = document.createElement("div");
     const title = document.createElement("p");
     const author = document.createElement("p");
@@ -66,8 +72,6 @@ const displayBook = (book) => {
     author.textContent = `${book.author}`;
     pages.textContent = `${book.pages} pages`;
     removeBtn.textContent = "Remove";
-
-   
 
     if (book.read) {
         readBtn.textContent = "Read";
@@ -90,7 +94,19 @@ const displayBook = (book) => {
         
         removeBook(book.title);
         card.remove();
-    })
+    });
+
+    readBtn.addEventListener('click', () => {
+        let isRead = changeRead(book.title);
+        
+        if (isRead === true) {
+            readBtn.textContent = "Read";
+            readBtn.classList.replace("btn-light-red", "btn-light-green");
+        } else {
+            readBtn.textContent = "Not Read";
+            readBtn.classList.replace("btn-light-green", "btn-light-red");
+        }
+    });
 
 }
 
