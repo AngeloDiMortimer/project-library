@@ -9,14 +9,16 @@ const errorMsg = document.getElementById("error-msg");
 
 let myLibrary = [];
 
-//Object Constructor
-function Book(title, author, pages, read) {
+class Book {
+    //Object Constructor
+    constructor(title, author, pages, read) {
     
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    
 }
 
 /* User input */
